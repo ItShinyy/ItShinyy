@@ -36,7 +36,7 @@
       }
     }
 
-    // Check if libraries loaded and initialize
+    // Check libraries and initialize
     window.addEventListener('load', () => {
       if (typeof THREE === 'undefined') {
         logError('Three.js failed to load from Libs/three.core.min.js. Check file path or library availability.');
@@ -76,12 +76,6 @@
         p2.position.set(0, -25, -80);
         scene.add(p1, p2);
 
-        // Fallback cube
-        const cubeGeometry = new THREE.BoxGeometry(10, 10, 10);
-        const cubeMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-        const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-        scene.add(cube);
-
         // Objects
         createHeartParticles();
         createSpinningText();
@@ -89,7 +83,7 @@
         // Events
         window.addEventListener('resize', onResize);
 
-        // Start animation + entrance tween
+        // Start animation
         startHeartAnimation();
         animate();
       } catch (e) {
@@ -97,7 +91,7 @@
       }
     }
 
-    // Text content with updated compliment
+    // Text content
     const outerText = ["Chúc Hải Yến ngày 20.10", "Ngập tràn niềm vui", "Thật hạnh phúc", "Luôn xinh đẹp", "♥"];
     const innerText = ["Chúc em", "luôn là", "cô gái", "may mắn", "nhất thế gian"];
 
