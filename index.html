@@ -12,41 +12,18 @@
 </head>
 <body>
   <div id="error"></div>
-  <!-- Primary CDN links -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tween.js@18.6.4/dist/tween.min.js"></script>
+  <!-- Local library scripts -->
+  <script src="Libs/three.core.min.js"></script>
+  <script src="Libs/tween.min.js"></script>
   <script>
+    // Declare global variables
+    let scene, camera, renderer, clock, heartParticles, outerRing, innerRing;
+
     // Error logging
     function logError(message) {
       const errorDiv = document.getElementById('error');
       errorDiv.innerHTML += `<p>${message}</p>`;
       console.error(message);
-    }
-
-    // Check if libraries loaded
-    window.addEventListener('load', () => {
-      if (typeof THREE === 'undefined') {
-        logError('Three.js failed to load from CDN. Check network or try local fallback.');
-        // Optional: Load local fallback (uncomment and provide local files)
-        // loadLocalScript('libs/three.min.js', () => logError('Local Three.js loaded'));
-      }
-      if (typeof TWEEN === 'undefined') {
-        logError('TWEEN.js failed to load from CDN. Check network or try local fallback.');
-        // Optional: Load local fallback (uncomment and provide local files)
-        // loadLocalScript('libs/tween.min.js', () => logError('Local TWEEN.js loaded'));
-      }
-      if (typeof THREE !== 'undefined' && typeof TWEEN !== 'undefined') {
-        init();
-      }
-    });
-
-    // Function to load local scripts (optional)
-    function loadLocalScript(url, callback) {
-      const script = document.createElement('script');
-      script.src = url;
-      script.onload = callback;
-      script.onerror = () => logError(`Failed to load local script: ${url}`);
-      document.head.appendChild(script);
     }
 
     // WebGL support check
@@ -58,6 +35,23 @@
         return false;
       }
     }
+
+    // Check if libraries loaded and initialize
+    window.addEventListener('load', () => {
+      if (typeof THREE === 'undefined') {
+        logError('Three.js failed to load from Libs/three.core.min.js. Check file path or library availability.');
+        return;
+      }
+      if (typeof TWEEN === 'undefined') {
+        logError('TWEEN.js failed to load from Libs/tween.min.js. Check file path or library availability.');
+        return;
+      }
+      if (isWebGLAvailable()) {
+        init();
+      } else {
+        logError('WebGL is not supported in this browser.');
+      }
+    });
 
     function init() {
       try {
@@ -270,11 +264,6 @@
       } catch (e) {
         logError(`Animation error: ${e.message}`);
       }
-    }
-
-    // Initialize with WebGL check
-    if (!isWebGLAvailable()) {
-      logError('WebGL is not supported in this browser.');
     }
   </script>
 </body>
