@@ -1,527 +1,281 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Japan Travel Website - Design & Wireframes</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trái Tim 3D - Hải Yến</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-      background-color: #f9f9f9;
-    }
-
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-      border-bottom: 2px solid #cc3300;
-      padding-bottom: 20px;
-    }
-
-    h1 {
-      color: #cc3300;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      margin: 30px 0 15px;
-      color: #cc3300;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-    }
-
-    h3 {
-      margin: 20px 0 10px;
-    }
-
-    p {
-      margin-bottom: 15px;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      border: 1px solid #ddd;
-      margin: 15px 0;
-      display: block;
-    }
-
-    .wireframe-section {
-      margin-bottom: 50px;
-      padding: 20px;
-      background-color: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-
-    .wireframe-container {
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
-    }
-
-    @media (min-width: 768px) {
-      .wireframe-container {
-        flex-direction: row;
-        flex-wrap: wrap;
-      }
-      
-      .wireframe {
-        flex: 1;
-        min-width: 300px;
-      }
-    }
-
-    .wireframe {
-      padding: 15px;
-      background-color: #f5f5f5;
-      border-radius: 5px;
-    }
-
-    .wireframe-title {
-      text-align: center;
-      margin-bottom: 15px;
-      font-weight: bold;
-      color: #555;
-    }
-
-    .wireframe-img {
-      border: 1px solid #ccc;
-      background: white;
-      padding: 10px;
-    }
-
-    /* Responsive website demo styles */
-    /* Actual website code starts here */
-    nav {
-      background-color: #4d76af;
-      padding: 10px;
-      display: inline-block;
-      width: 80%;
-    }
-
-    nav img {
-      width: 10%;
-      vertical-align: middle;
-    }
-
-    /* List item styling commented out as required */
-    /*
-    li {
-      display: inline;
-      margin-right: 20px;
-    }
-    */
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      padding: 5px 10px;
-    }
-
-    nav a:hover {
-      background-color: #33658A;
-      border-radius: 5px;
-    }
-
-    /* Gallery grid - Mobile first approach */
-    .gallery {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    figure {
-      border: 2px solid #4d76af;
-      padding: 10px;
-      background-color: #fff;
-    }
-
-    figure img {
-      width: 100%;
-      margin: 0;
-    }
-
-    figcaption {
-      margin-top: 10px;
-      font-weight: bold;
-      color: #333;
-      text-align: center;
-    }
-
-    /* Tablet view */
-    @media screen and (min-width: 772px) {
-      .gallery {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
-      figure {
-        border-radius: 50%;
-        overflow: hidden;
-      }
-      
-      figure img {
-        aspect-ratio: 1/1;
-        object-fit: cover;
-      }
-      
-      /* Last figure takes up both columns */
-      figure:last-child {
-        grid-column: span 2;
-      }
-    }
-
-    /* Large screen view */
-    @media screen and (min-width: 992px) {
-      .gallery {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      
-      /* Remove circular shape */
-      figure {
-        border-radius: 0;
-      }
-      
-      /* Every third figure takes up two columns */
-      figure:nth-child(3n) {
-        grid-column: span 2;
-      }
-      
-      /* Last figure doesn't need special styling */
-      figure:last-child {
-        grid-column: auto;
-      }
-      
-      /* If last figure is also 3n, give it the styling */
-      figure:last-child:nth-child(3n) {
-        grid-column: span 2;
-      }
-    }
-
-    /* Prefers-reduced-motion Query */
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-    }
-
-    /* Dark mode Query */
-    @media (prefers-color-scheme: dark) {
-      figure {
-        background-color: #333;
-        border-color: #000;
-      }
-      
-      figcaption {
-        color: #ffd280;
-      }
-    }
-
-    .disclaimer {
-      margin-top: 50px;
-      padding: 15px;
-      background-color: #ffe9e1;
-      border-left: 4px solid #cc3300;
-    }
-
-    footer {
-      margin-top: 50px;
-      text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid #ddd;
-      color: #666;
-    }
+    body { margin: 0; overflow: hidden; background: #000; }
+    canvas { display: block; }
+    #error { color: red; font-family: Arial, sans-serif; position: absolute; top: 10px; left: 10px; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Japan Travel Website - Design Wireframes</h1>
-    <p>A responsive website design that adapts to screen sizes and user preferences</p>
-  </header>
+  <div id="error"></div>
+  <!-- Primary CDN links -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tween.js@18.6.4/dist/tween.min.js"></script>
+  <script>
+    // Error logging
+    function logError(message) {
+      const errorDiv = document.getElementById('error');
+      errorDiv.innerHTML += `<p>${message}</p>`;
+      console.error(message);
+    }
 
-  <div class="wireframe-section">
-    <h2>Wireframe Designs</h2>
-    <p>These wireframes show the planned layout for different screen sizes. The design follows a mobile-first approach with progressive enhancements for larger screens, while also respecting user preferences like reduced motion and color scheme.</p>
+    // Check if libraries loaded
+    window.addEventListener('load', () => {
+      if (typeof THREE === 'undefined') {
+        logError('Three.js failed to load from CDN. Check network or try local fallback.');
+        // Optional: Load local fallback (uncomment and provide local files)
+        // loadLocalScript('libs/three.min.js', () => logError('Local Three.js loaded'));
+      }
+      if (typeof TWEEN === 'undefined') {
+        logError('TWEEN.js failed to load from CDN. Check network or try local fallback.');
+        // Optional: Load local fallback (uncomment and provide local files)
+        // loadLocalScript('libs/tween.min.js', () => logError('Local TWEEN.js loaded'));
+      }
+      if (typeof THREE !== 'undefined' && typeof TWEEN !== 'undefined') {
+        init();
+      }
+    });
 
-    <div class="wireframe-container">
-      <div class="wireframe">
-        <div class="wireframe-title">Mobile View (Default)</div>
-        <div class="wireframe-img">
-          <!-- ASCII Art wireframe for mobile -->
-          <pre style="background:#f8f8f8; overflow:auto; font-size:12px; line-height:1.2">
-+----------------------+
-|      HEADER          |
-|                      |
-+----------------------+
-|     NAVIGATION       |
-+----------------------+
-|                      |
-| HERO IMAGE & TEXT    |
-|                      |
-+----------------------+
-|                      |
-| ABOUT JAPAN          |
-|                      |
-+----------------------+
-|                      |
-|   +-------------+    |
-|   |             |    |
-|   |   IMAGE 1   |    |
-|   |             |    |
-|   +-------------+    |
-|   Kyoto Temples      |
-|   Description text   |
-+----------------------+
-|                      |
-|   +-------------+    |
-|   |             |    |
-|   |   IMAGE 2   |    |
-|   |             |    |
-|   +-------------+    |
-|   Cherry Blossoms    |
-|   Description text   |
-+----------------------+
-|      (more images    |
-|       follow the     |
-|       same 1-column  |
-|       pattern)       |
-+----------------------+
-|                      |
-|      CONTACT         |
-|      FORM            |
-|                      |
-+----------------------+
-|      FOOTER          |
-+----------------------+
-          </pre>
-        </div>
-        <p>The mobile view uses a single column layout with all elements stacked vertically for easy scrolling. Images and content take up the full width of the screen.</p>
-      </div>
+    // Function to load local scripts (optional)
+    function loadLocalScript(url, callback) {
+      const script = document.createElement('script');
+      script.src = url;
+      script.onload = callback;
+      script.onerror = () => logError(`Failed to load local script: ${url}`);
+      document.head.appendChild(script);
+    }
 
-      <div class="wireframe">
-        <div class="wireframe-title">Tablet View (772px+)</div>
-        <div class="wireframe-img">
-          <!-- ASCII Art wireframe for tablet -->
-          <pre style="background:#f8f8f8; overflow:auto; font-size:12px; line-height:1.2">
-+-------------------------------------------+
-|                 HEADER                    |
-|                                           |
-+-------------------------------------------+
-|              NAVIGATION                   |
-+-------------------------------------------+
-|                                           |
-|           HERO IMAGE & TEXT               |
-|                                           |
-+-------------------------------------------+
-|                                           |
-|            ABOUT JAPAN                    |
-|                                           |
-+-------------------------------------------+
-|                                           |
-| +----------------+  +----------------+    |
-| |                |  |                |    |
-| |    IMAGE 1     |  |    IMAGE 2     |    |
-| |   (CIRCULAR)   |  |   (CIRCULAR)   |    |
-| |                |  |                |    |
-| +----------------+  +----------------+    |
-| Kyoto Temples        Cherry Blossoms      |
-| Description          Description          |
-+-------------------------------------------+
-|                                           |
-| +----------------+  +----------------+    |
-| |                |  |                |    |
-| |    IMAGE 3     |  |    IMAGE 4     |    |
-| |   (CIRCULAR)   |  |   (CIRCULAR)   |    |
-| |                |  |                |    |
-| +----------------+  +----------------+    |
-| Japanese Gardens     Bamboo Grove         |
-| Description          Description          |
-+-------------------------------------------+
-|                                           |
-| +-----------------------------------------+
-| |                                         |
-| |              IMAGE 9                    |
-| |            (CIRCULAR)                   |
-| |        SPANS BOTH COLUMNS               |
-| |                                         |
-| +-----------------------------------------+
-| Autumn Colors                             |
-| Description                               |
-+-------------------------------------------+
-|                                           |
-|                CONTACT                    |
-|                 FORM                      |
-|                                           |
-+-------------------------------------------+
-|                 FOOTER                    |
-+-------------------------------------------+
-          </pre>
-        </div>
-        <p>In the tablet view, images are arranged in a two-column grid. Each image is displayed in a circular frame. The last image spans both columns for emphasis and visual interest.</p>
-      </div>
+    // WebGL support check
+    function isWebGLAvailable() {
+      try {
+        const canvas = document.createElement('canvas');
+        return !!(window.WebGLRenderingContext && (canvas.getContext('webgl') || canvas.getContext('experimental-webgl')));
+      } catch (e) {
+        return false;
+      }
+    }
 
-      <div class="wireframe">
-        <div class="wireframe-title">Desktop View (992px+)</div>
-        <div class="wireframe-img">
-          <!-- ASCII Art wireframe for desktop -->
-          <pre style="background:#f8f8f8; overflow:auto; font-size:12px; line-height:1.2">
-+-------------------------------------------------------------+
-|                           HEADER                            |
-|                                                             |
-+-------------------------------------------------------------+
-|                        NAVIGATION                           |
-+-------------------------------------------------------------+
-|                                                             |
-|                    HERO IMAGE & TEXT                        |
-|                                                             |
-+-------------------------------------------------------------+
-|                                                             |
-|                       ABOUT JAPAN                           |
-|                                                             |
-+-------------------------------------------------------------+
-|                                                             |
-| +-----------+  +-----------+  +-----------------------+    |
-| |           |  |           |  |                       |    |
-| | IMAGE 1   |  | IMAGE 2   |  |      IMAGE 3          |    |
-| |           |  |           |  |    (SPANS 2 COLS)     |    |
-| |           |  |           |  |                       |    |
-| +-----------+  +-----------+  +-----------------------+    |
-| Kyoto          Cherry          Japanese Gardens            |
-| Description    Description     Description                 |
-+-------------------------------------------------------------+
-|                                                             |
-| +-----------+  +-----------+  +-----------------------+    |
-| |           |  |           |  |                       |    |
-| | IMAGE 4   |  | IMAGE 5   |  |      IMAGE 6          |    |
-| |           |  |           |  |    (SPANS 2 COLS)     |    |
-| |           |  |           |  |                       |    |
-| +-----------+  +-----------+  +-----------------------+    |
-| Bamboo         Tokyo           Hokkaido                    |
-| Description    Description     Description                 |
-+-------------------------------------------------------------+
-|                                                             |
-| +-----------+  +-----------+  +-----------------------+    |
-| |           |  |           |  |                       |    |
-| | IMAGE 7   |  | IMAGE 8   |  |      IMAGE 9          |    |
-| |           |  |           |  |    (SPANS 2 COLS)     |    |
-| |           |  |           |  |                       |    |
-| +-----------+  +-----------+  +-----------------------+    |
-| Food           Shibuya        Autumn                       |
-| Description    Description    Description                  |
-+-------------------------------------------------------------+
-|                                                             |
-|                        CONTACT                              |
-|                         FORM                                |
-|                                                             |
-+-------------------------------------------------------------+
-|                        FOOTER                               |
-+-------------------------------------------------------------+
-          </pre>
-        </div>
-        <p>In the desktop view, images are arranged in a three-column grid. Every third image spans two columns, creating visual rhythm and highlighting certain items. The circular frames from tablet view are removed for a cleaner, more traditional layout.</p>
-      </div>
-    </div>
+    function init() {
+      try {
+        // Scene + Camera
+        scene = new THREE.Scene();
+        camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 60;
 
-    <h3>Additional Responsive Features:</h3>
-    <ul>
-      <li><strong>Prefers-reduced-motion:</strong> Disables smooth scrolling for users who prefer reduced motion</li>
-      <li><strong>Dark mode:</strong> Changes the background color of figures to dark, text to a yellow-ish color, and borders to black</li>
-    </ul>
-  </div>
+        // Renderer
+        renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000);
+        document.body.appendChild(renderer.domElement);
 
-  <div class="wireframe-section">
-    <h2>Design Explanation</h2>
-    
-    <h3>Mobile-First Approach</h3>
-    <p>The design starts with a single column layout optimized for mobile devices, then progressively enhances the experience for larger screens. This ensures good performance and usability on all devices, especially considering that many users will access the site via smartphones.</p>
-    
-    <h3>Grid Layout Variations</h3>
-    <p>As screen size increases, the grid layout evolves from a single column (mobile) to two columns (tablet) to three columns (desktop). This maximizes the use of available space while maintaining readability and visual appeal.</p>
-    
-    <h3>Visual Emphasis</h3>
-    <p>For tablet views, the circular frames create a playful, unique aesthetic that draws attention to the images. The last item spans both columns for emphasis. On desktop, every third image spans two columns to create visual rhythm and highlight key destinations.</p>
-    
-    <h3>User Preference Adaptations</h3>
-    <p>The site respects user preferences for reduced motion and color scheme, making it more accessible and comfortable for all users. Those who prefer reduced motion will not experience smooth scrolling effects, and those who prefer dark themes will get a color scheme that's easier on the eyes in low-light environments.</p>
-  </div>
+        // Clock
+        clock = new THREE.Clock();
 
-  <!-- Live example of the responsive design -->
-  <div class="wireframe-section">
-    <h2>Live Demonstration</h2>
-    <p>Below is a working demonstration of the responsive gallery with the required features:</p>
-    
-    <div class="gallery">
-      <figure>
-        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e" alt="Kinkakuji Temple (Golden Pavilion) in Kyoto surrounded by a peaceful garden and reflecting pond">
-        <figcaption>Kyoto's Ancient Temples</figcaption>
-      </figure>
+        // Lights
+        const p1 = new THREE.PointLight(0xff66cc, 1.2, 300);
+        p1.position.set(0, 25, 80);
+        const p2 = new THREE.PointLight(0x6600ff, 0.6, 300);
+        p2.position.set(0, -25, -80);
+        scene.add(p1, p2);
 
-      <figure>
-        <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a" alt="Cherry blossom trees in full bloom with delicate pink flowers against a blue sky">
-        <figcaption>Cherry Blossom Season</figcaption>
-      </figure>
+        // Fallback cube
+        const cubeGeometry = new THREE.BoxGeometry(10, 10, 10);
+        const cubeMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        scene.add(cube);
 
-      <figure>
-        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186" alt="Traditional Japanese garden with carefully arranged rocks, plants, and a small pond">
-        <figcaption>Japanese Gardens</figcaption>
-      </figure>
+        // Objects
+        createHeartParticles();
+        createSpinningText();
 
-      <figure>
-        <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9" alt="Path through a bamboo forest with tall green stalks creating natural walls">
-        <figcaption>Arashiyama Bamboo Grove</figcaption>
-      </figure>
+        // Events
+        window.addEventListener('resize', onResize);
 
-      <figure>
-        <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf" alt="Tokyo skyline at night with colorful lights and skyscrapers">
-        <figcaption>Tokyo's Vibrant Cityscape</figcaption>
-      </figure>
+        // Start animation + entrance tween
+        startHeartAnimation();
+        animate();
+      } catch (e) {
+        logError(`Initialization error: ${e.message}`);
+      }
+    }
 
-      <figure>
-        <img src="https://images.unsplash.com/photo-1542931287-023b922fa89b" alt="Snow-covered landscape in Hokkaido with mountains in the background">
-        <figcaption>Hokkaido Winter Wonderland</figcaption>
-      </figure>
+    // Text content with updated compliment
+    const outerText = ["Chúc Hải Yến ngày 20.10", "Ngập tràn niềm vui", "Thật hạnh phúc", "Luôn xinh đẹp", "♥"];
+    const innerText = ["Chúc em", "luôn là", "cô gái", "may mắn", "nhất thế gian"];
 
-      <figure>
-        <img src="https://images.unsplash.com/photo-1553621042-f6e147245754" alt="Traditional Japanese meal with various small dishes">
-        <figcaption>Culinary Discoveries</figcaption>
-      </figure>
+    // Create heart particles
+    function createHeartParticles() {
+      try {
+        const particleCount = 5000;
+        const positions = new Float32Array(particleCount * 3);
+        const startPositions = new Float32Array(particleCount * 3);
+        const endPositions = new Float32Array(particleCount * 3);
 
-      <figure>
-        <img src="https://images.unsplash.com/photo-1533050487297-09b450131914" alt="Busy Shibuya crossing in Tokyo with crowds of people crossing the street">
-        <figcaption>Shibuya Crossing</figcaption>
-      </figure>
+        for (let i = 0; i < particleCount; i++) {
+          const i3 = i * 3;
+          const t = Math.random() * Math.PI * 2;
+          const x = 16 * Math.pow(Math.sin(t), 3);
+          const y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+          const z = (Math.random() - 0.5) * 4;
+          endPositions[i3] = x * 0.9;
+          endPositions[i3 + 1] = y * 0.9;
+          endPositions[i3 + 2] = z * 0.9;
+          const r = 80;
+          const phi = Math.random() * Math.PI * 2;
+          const theta = Math.random() * Math.PI;
+          startPositions[i3] = r * Math.sin(theta) * Math.cos(phi);
+          startPositions[i3 + 1] = r * Math.sin(theta) * Math.sin(phi);
+          startPositions[i3 + 2] = r * Math.cos(theta);
+          positions[i3] = startPositions[i3];
+          positions[i3 + 1] = startPositions[i3 + 1];
+          positions[i3 + 2] = startPositions[i3 + 2];
+        }
 
-      <figure>
-        <img src="https://images.unsplash.com/photo-1480796927426-f609979314bd" alt="Red maple leaves during autumn in Japan">
-        <figcaption>Autumn Colors</figcaption>
-      </figure>
-    </div>
-    
-    <p>Try resizing your browser window to see how the layout changes at different widths. If your system supports it, you can also toggle dark mode in your system settings to see the color scheme adaptation.</p>
-  </div>
+        const geom = new THREE.BufferGeometry();
+        geom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geom.setAttribute('start', new THREE.BufferAttribute(startPositions, 3));
+        geom.setAttribute('end', new THREE.BufferAttribute(endPositions, 3));
 
-  <div class="disclaimer">
-    <h3>Design Notes:</h3>
-    <p>This wireframe and design document shows the planning phase for a responsive Japan travel website. The actual implementation will follow these design principles while adding more detailed content and styling.</p>
-  </div>
+        const mat = new THREE.PointsMaterial({
+          color: 0xff66cc,
+          size: 0.3,
+          sizeAttenuation: true,
+          transparent: true,
+          opacity: 0.9,
+          blending: THREE.AdditiveBlending
+        });
 
-  <footer>
-    <p>&copy; 2025 Japan Travel Design Documentation</p>
-  </footer>
+        heartParticles = new THREE.Points(geom, mat);
+        heartParticles.position.y = 12;
+        scene.add(heartParticles);
+      } catch (e) {
+        logError(`Heart particles error: ${e.message}`);
+      }
+    }
+
+    // Create sprite text
+    function createTextSprite(text, color, fontSize) {
+      try {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const scale = 2;
+        canvas.width = 512 * scale;
+        canvas.height = 128 * scale;
+        ctx.scale(scale, scale);
+        ctx.font = `${fontSize}px Arial, sans-serif`;
+        ctx.fillStyle = color;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, canvas.width / (2 * scale), canvas.height / (2 * scale));
+
+        const tex = new THREE.CanvasTexture(canvas);
+        tex.needsUpdate = true;
+        const mat = new THREE.SpriteMaterial({ map: tex, transparent: true });
+        const spr = new THREE.Sprite(mat);
+        spr.scale.set((canvas.width / scale) * 0.05, (canvas.height / scale) * 0.05, 1);
+        return spr;
+      } catch (e) {
+        logError(`Text sprite error: ${e.message}`);
+        return new THREE.Sprite();
+      }
+    }
+
+    function createSpinningText() {
+      try {
+        outerRing = new THREE.Group();
+        innerRing = new THREE.Group();
+        const outerR = 34;
+        const innerR = 26;
+
+        outerText.forEach((t, i) => {
+          const s = createTextSprite(t, '#ffffff', 52);
+          const a = (i / outerText.length) * Math.PI * 2;
+          s.position.set(Math.cos(a) * outerR, -10, Math.sin(a) * outerR);
+          outerRing.add(s);
+        });
+
+        innerText.forEach((t, i) => {
+          const s = createTextSprite(t, '#bbbbbb', 44);
+          const a = (i / innerText.length) * Math.PI * 2;
+          s.position.set(Math.cos(a) * innerR, -10, Math.sin(a) * innerR);
+          innerRing.add(s);
+        });
+
+        scene.add(outerRing, innerRing);
+      } catch (e) {
+        logError(`Spinning text error: ${e.message}`);
+      }
+    }
+
+    // Heart entrance tween
+    function startHeartAnimation() {
+      try {
+        const geom = heartParticles.geometry;
+        const pos = geom.getAttribute('position');
+        const start = geom.getAttribute('start');
+        const end = geom.getAttribute('end');
+
+        const progress = { v: 0 };
+        new TWEEN.Tween(progress)
+          .to({ v: 1 }, 3800)
+          .easing(TWEEN.Easing.Cubic.InOut)
+          .onUpdate(() => {
+            const cnt = pos.count;
+            for (let i = 0; i < cnt; i++) {
+              const i3 = i * 3;
+              pos.array[i3] = start.array[i3] + (end.array[i3] - start.array[i3]) * progress.v;
+              pos.array[i3 + 1] = start.array[i3 + 1] + (end.array[i3 + 1] - start.array[i3 + 1]) * progress.v;
+              pos.array[i3 + 2] = start.array[i3 + 2] + (end.array[i3 + 2] - start.array[i3 + 2]) * progress.v;
+            }
+            pos.needsUpdate = true;
+          })
+          .start();
+      } catch (e) {
+        logError(`Heart animation error: ${e.message}`);
+      }
+    }
+
+    // Resize handler
+    function onResize() {
+      try {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      } catch (e) {
+        logError(`Resize error: ${e.message}`);
+      }
+    }
+
+    // Render loop
+    function animate() {
+      try {
+        requestAnimationFrame(animate);
+        TWEEN.update();
+        const t = clock.getElapsedTime();
+
+        // Subtle heartbeat (scale)
+        const s = 1 + Math.sin(t * 3) * 0.035;
+        heartParticles.scale.set(s, s, s);
+
+        // Rotation
+        heartParticles.rotation.y += 0.0035;
+        if (outerRing) outerRing.rotation.y += 0.004;
+        if (innerRing) innerRing.rotation.y -= 0.002;
+
+        renderer.render(scene, camera);
+      } catch (e) {
+        logError(`Animation error: ${e.message}`);
+      }
+    }
+
+    // Initialize with WebGL check
+    if (!isWebGLAvailable()) {
+      logError('WebGL is not supported in this browser.');
+    }
+  </script>
 </body>
 </html>
