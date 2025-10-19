@@ -76,6 +76,12 @@
         p2.position.set(0, -25, -80);
         scene.add(p1, p2);
 
+        // Fallback cube
+        const cubeGeometry = new THREE.BoxGeometry(10, 10, 10);
+        const cubeMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+        const cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+        scene.add(cube);
+
         // Objects
         createHeartParticles();
         createSpinningText();
